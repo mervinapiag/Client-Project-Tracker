@@ -21,6 +21,9 @@ Project-App is a web application that allows users to manage their to-do list. U
 - PostgreSQL
 - SequelizeORM
 
+## Postman
+- https://fl-rnd.postman.co/workspace/560e1c63-eeaa-4d2f-8371-51f72b8c403a/collection/38363729-568ac1ad-29ce-4fb3-974e-c8f47ca6c634?action=share&source=copy-link&creator=38363729
+
 ## Installation
 Clone the repository and install the required dependencies:
 
