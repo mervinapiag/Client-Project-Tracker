@@ -1,6 +1,6 @@
 'use strict';
 const logger = require('../../../../utils/logger').child({name: 'auth'});
-const projectRepository = require('../repositories/project');
+const projectService = require('../services/project');
 const httpConstants = require('http2').constants;
 
 /**
@@ -13,7 +13,7 @@ const create = ()=> {
     
     return (req, res) => {
 
-        projectRepository.create(req.body.data)
+        projectService.create(req.body.data)
         .then(data => {
             res.status(httpConstants.HTTP_STATUS_CREATED).json({
                 status: true,
@@ -39,7 +39,7 @@ const findAll = () => {
     return (req, res) => {
         //For Filters
         const { limit, offset, status, priority } = req.query;
-        projectRepository.findAll(limit, offset, { status, priority })
+        projectService.findAll(limit, offset, { status, priority })
             .then(data => {
                 res.status(httpConstants.HTTP_STATUS_OK).json({
                     status: true,
@@ -60,7 +60,7 @@ const findAll = () => {
 //Find Project
 const findByPk = () => {
     return (req, res) => {
-        projectRepository.findByPk(req.params.id)
+        projectService.findByPk(req.params.id)
         .then(data => {
             res.status(httpConstants.HTTP_STATUS_OK).json({
                 status: true,
@@ -82,7 +82,7 @@ const findByPk = () => {
 //Update Project
 const update = ()=> {
     return (req, res) => {
-        projectRepository.update(req.params.id, req.body.data)
+        projectService.update(req.params.id, req.body.data)
             .then(data => {
                 res.status(httpConstants.HTTP_STATUS_OK).json({
                     status: true,
@@ -105,7 +105,7 @@ const update = ()=> {
 //Destroy Project
 const destroy = () => {
     return (req, res) => {
-        projectRepository.destroy(req.params.id)
+        projectService.destroy(req.params.id)
             .then(() => {
                 res.status(httpConstants.HTTP_STATUS_OK).json({
                     status: true,
