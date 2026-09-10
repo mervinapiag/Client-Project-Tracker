@@ -2,28 +2,24 @@
 
 Project-App is a web application that allows users to manage their to-do list. Users can add, update, delete, and view their todos through the provided API endpoints.
 
-Features
-Create a project
-View all projects
-View a project by ID
-Update a project
-Delete a project
-Request validation using Joi
-Duplicate project name validation
-Start date and due date validation
-PostgreSQL database integration
-Sequelize migrations
-API testing using Mocha and Supertest
-Repository Pattern architecture
-Technologies
-Node.js
-Express.js
-PostgreSQL
-Sequelize ORM
-Joi
-Mocha
-Chai
-Supertest
+## Features
+
+- Create a project
+- View all projects
+- View a project by ID
+- Update a project
+- Delete a project
+
+## Custom Features For Validation
+- Request validation using Joi
+- Duplicate project name validation
+- Start date and due date validation
+
+## Technologies Used
+- Node.js
+- Express.js
+- PostgreSQL
+- SequelizeORM
 
 ## Installation
 Clone the repository and install the required dependencies:
@@ -52,11 +48,15 @@ PORT=5000
 ## Database Setup
 After configuring the .env file, run the Sequelize migrations to create the required database tables:
 
+```bash
 npx sequelize-cli db:migrate
+```
 
 To check all available Sequelize CLI commands:
 
+```bash
 npx sequelize-cli
+```
 
 ## Running the Application
 
@@ -74,39 +74,14 @@ npx mocha test/project.test.js
 ```
 This will execute the test suite using the Mocha test framework.
 
-
-
-### `.env.test`
-
-For running tests, update the `.env.test` file with the following configurations:
-
-```bash
-NODE_ENV=test
-TEST_USERNAME=<test username>
-TEST_PASSWORD=<test username>
-TEST_URL=<api base url>
-DATABASE_TEST_URL=<test db connection>
-```
-
-### Creating new model
-
-To generate new model:
-```bash
-npx sequelize-cli models:generate --name <name> --attributes <list of attributes>
-```
-
-### Creating migrations
-
-To generate new migration:
-```bash
-npx sequelize-cli migration:generate --name <name>
-npx sequelize-cli db:migrate # to run migration
-```
-
-To view all Sequelize commands, run:
-```bash
-npx sequelize-cli
-```
+## Assumptions Made
+- `project_name` must be unique name (Duplicate project name validation).
+- `status` is limited only to `pending`, `in_progress`, `completed`, and `cancelled`.
+- `priority` is limited to `low`, `medium`, and `high`.
+ `due_date` cannot be earlier than `start_date`.
+- Pagination defaults to `limit = 10` and `offset = 0`.
+- `status` and `priority` filters are optional.
+- Unit and API testing using Mocha, Chai, and Supertest
 
 ### Folder Structuring
 Below is the suggested folder structure for an organized development: 
